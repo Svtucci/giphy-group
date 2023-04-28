@@ -10,11 +10,6 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 
 
-
-
-
-
-
 const searchResult = (state = [], action) => {
     if (action.type === 'FIND_GIF_SEARCH') {
         return action.payload;

@@ -19,7 +19,6 @@ function SearchBar() {
     const submit = () => {
         const action = { type: 'SET_GIF_SEARCH', payload: searchGif }
         dispatch(action);
-
     };
 
 
@@ -30,7 +29,7 @@ function SearchBar() {
             <form>
                 <label htmlFor="search-input">Search:</label>
                 <input type="text" id="search-input" placeholder="Enter your search..." onChange={handleChange} />
-                <button type="submit" onClick= {submit} >Submit</button>
+                <button type="submit" onClick= {submit}> Submit </button>
             </form>
         </>
 
