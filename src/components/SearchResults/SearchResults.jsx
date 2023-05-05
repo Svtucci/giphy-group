@@ -5,19 +5,26 @@ import FindGif from "./FindGif";
 
 function SearchResults() {
 
-    const allGifs = useSelector(store => store.searchList);
+    const allGifs = useSelector(store => store.searchResult);
+    const dispatch= useDispatch();
 
+   useEffect (() => {
+    // dispatch({type: 'SET_GIF_SEARCH'})
+   }, []); 
 
-
-    // we got an error sayinh .map was having issues populating 
+    // we got an error saying .map was having issues populating 
     return (
         <>
             <div>
-                <h3>Search Results of Giphys</h3>
-                {
-                    allGifs && allGifs.map((gif, i) => (
-                        <FindGif key={i} gif={gif} />
-                    ))
+                {allGifs.length === 0 ? (
+                    <h2>Loading</h2>
+                ) : (
+                    allGifs.map((gif, i) => {
+                        return (
+                            <img src={gif.images.downsized_medium.url} />
+                        )
+                    })
+                )
                 }
             </div>
         </>

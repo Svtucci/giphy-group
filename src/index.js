@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 
+import axios from 'axios'; 
 
 const searchResult = (state = [], action) => {
     if (action.type === 'FIND_GIF_SEARCH') {
@@ -17,9 +18,11 @@ const searchResult = (state = [], action) => {
     return state;
 }
 
+
 function* findGif(action) {
     try {
-        const gif = yield axios.get(`/api/search/${action.payload}`);
+        const gif = yield axios.post("/api/search", { value: action.payload });
+        console.log(gif.data.data)
         yield put({ type: 'FIND_GIF_SEARCH', payload: gif.data.data});
     } catch (error) {
         console.log(`Error in GET on index: ${error}`);

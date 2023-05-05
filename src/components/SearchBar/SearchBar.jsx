@@ -14,10 +14,13 @@ function SearchBar() {
     const handleChange = (event) => {
         event.preventDefault();
         setfindGif(event.target.value)
+        console.log(findGif); 
     };
 
-    const submit = () => {
-        const action = { type: 'SET_GIF_SEARCH', payload: searchGif }
+    const submit = (event) => {
+        event.preventDefault();
+        const action = { type: 'SET_GIF_SEARCH', payload: findGif }
+        console.log(findGif); 
         dispatch(action);
     };
 
